@@ -33,6 +33,30 @@ namespace PromotionalEngine.Core
     }
 
     private void CalculateTotal()
-    {}
+    {
+      if (Promotions.Any())
+      {
+        Total = 0;
+        var itemUsedForPromotions = new List<string>();
+        foreach (var promo in Promotions)
+        {
+          if (promo.Type == PromotionType.PriceForQuantityPromotion)
+          {
+            var promoType = (PriceForQuantityPromotion)promo;
+            var item = promoType.Item;
+
+            var cartItem = Items.FirstOrDefault(x => x.Item.SKU == item.SKU);
+            if (cartItem == null) continue;
+
+            var totalQuantity = Items.Where(x => x.Item.SKU == item.SKU).Sum(x => x.Quantity);
+            var qualifiedQty = totalQuantity % promoType.Quantity;
+            Total = qualifiedQty * promoType.Total + (totalQuantity - (qualifiedQty * promoType.Quantity)) * cartItem.Item.Price;
+            itemUsedForPromotions.Add(cartItem.Item.SKU);
+          }
+        }
+
+        
+      }
+    }
   }
 }
