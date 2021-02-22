@@ -21,7 +21,19 @@ namespace PromotionalEngine.Core
       Type = PromotionType.PriceForQuantityPromotion;
     }
   }
-  
+
+  public class ComboPromotion : Promotion
+  {
+    public List<Tuple<Item, int>> ItemAndQuantity { get; set; }
+    public decimal Total { get; set; }
+    public ComboPromotion(List<Tuple<Item, int>> items, decimal total)
+    {
+      ItemAndQuantity = items;
+      Total = total;
+      Type = PromotionType.ComboPromotion;
+    }
+  }
+
   public enum PromotionType
   {
     PriceForQuantityPromotion = 1,
