@@ -55,7 +55,11 @@ namespace PromotionalEngine.Core
           }
         }
 
-        
+        var nonUsedItems = Items.Where(x => !itemUsedForPromotions.Contains(x.Item.SKU));
+        foreach (var nonUsedItem in nonUsedItems)
+        {
+          Total += nonUsedItem.Item.Price * nonUsedItem.Quantity;
+        }
       }
     }
   }
