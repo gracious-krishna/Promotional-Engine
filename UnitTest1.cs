@@ -22,20 +22,26 @@ namespace Promotional_Engine
       var d = new Item("D", 15);
 
       var promotion1 = new PriceForQuantityPromotion(a, 3, 130);
+      var promotion2 = new PriceForQuantityPromotion(b, 2, 45);
 
-      var promotions = new List<Promotion>() { promotion1 };
+      var promotions = new List<Promotion>() { promotion1, promotion2 };
       CartScenario1.AddPromotions(promotions);
 
       CartScenario1.AddItem(new CartItem(a, 1));
       CartScenario1.AddItem(new CartItem(b, 1));
       CartScenario1.AddItem(new CartItem(c, 1));
+
+      CartScenario2.AddItem(new CartItem(a, 5));
+      CartScenario2.AddItem(new CartItem(b, 5));
+      CartScenario2.AddItem(new CartItem(c, 1));
     }
 
     [Test]
     public void Test1()
     {
       Assert.True(CartScenario1.Total == 100);
-      
+      Assert.True(CartScenario1.Total == 370);
+
       Assert.Pass();
     }
   }
