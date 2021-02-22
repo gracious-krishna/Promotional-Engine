@@ -49,6 +49,7 @@ namespace Promotional_Engine
     {
       Assert.True(CartScenario1.Total == 100);
       Assert.True(CartScenario1.Total == 370);
+      Assert.True(CartScenario1.Total == 280);
 
       Assert.Pass();
     }
