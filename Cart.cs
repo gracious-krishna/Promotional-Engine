@@ -55,6 +55,8 @@ namespace PromotionalEngine.Core
           }
         }
 
+        //Add another promotion type here.
+
         var nonUsedItems = Items.Where(x => !itemUsedForPromotions.Contains(x.Item.SKU));
         foreach (var nonUsedItem in nonUsedItems)
         {
