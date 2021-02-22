@@ -23,10 +23,12 @@ namespace Promotional_Engine
 
       var promotion1 = new PriceForQuantityPromotion(a, 3, 130);
       var promotion2 = new PriceForQuantityPromotion(b, 2, 45);
-      var promotion3 = new ComboPromotion(new List<Tuple<Item, int>>{ Tuple.Create(c, 1), Tuple.Create(d, 1) }, 30);
+      var promotion3 = new ComboPromotion(new List<Tuple<Item, int>> { Tuple.Create(c, 1), Tuple.Create(d, 1) }, 30);
 
       var promotions = new List<Promotion>() { promotion1, promotion2, promotion3 };
       CartScenario1.AddPromotions(promotions);
+      CartScenario2.AddPromotions(promotions);
+      CartScenario3.AddPromotions(promotions);
 
       CartScenario1.AddItem(new CartItem(a, 1));
       CartScenario1.AddItem(new CartItem(b, 1));
@@ -35,6 +37,11 @@ namespace Promotional_Engine
       CartScenario2.AddItem(new CartItem(a, 5));
       CartScenario2.AddItem(new CartItem(b, 5));
       CartScenario2.AddItem(new CartItem(c, 1));
+
+      CartScenario3.AddItem(new CartItem(a, 3));
+      CartScenario3.AddItem(new CartItem(b, 5));
+      CartScenario3.AddItem(new CartItem(c, 1));
+      CartScenario3.AddItem(new CartItem(d, 1));
     }
 
     [Test]
