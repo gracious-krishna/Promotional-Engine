@@ -61,6 +61,11 @@ namespace PromotionalEngine.Core
           Total += nonUsedItem.Item.Price * nonUsedItem.Quantity;
         }
       }
+
+      else
+      {
+        Total = Items.Sum(x => x.Item.Price * x.Quantity);
+      }
     }
   }
 }
